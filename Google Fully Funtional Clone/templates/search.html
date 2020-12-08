@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Google</title>
+
+        <link rel="icon" href="https://cdn1.iconfinder.com/data/icons/company-identity/100/new-google-favicon-512.png" type="image/x-icon"/>
+        <link rel="shortcut icon" href="https://cdn1.iconfinder.com/data/icons/company-identity/100/new-google-favicon-512.png" type="image/x-icon"/>
+
+        <link rel="stylesheet" href="{{url_for('static', filename='normalize.css')}}"/>
+        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}"/>
+
+        <style type="text/css">
+            form.google-search-form .search-input {
+                width: 482px;
+                font-family: "system-ui";
+            }
+        </style>
+    
+    </head>
+    <body>
+        <header class="search-page-header-container">
+            <div>
+                
+                <div class="profile-nav">
+                    <input type="button" class="apps-menu"/>
+                    <input type="button" class="profile-icon"/>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <div class="vertical-center">
+                <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"/>
+                <br><br>
+            <form class="google-search-form" action="/search" method="get" style="margin:auto;">
+                    <div class="search-bar-container">
+                        <input type="button" class="search-button"/>
+
+                        <input type="text" class="search-input" name="q" />
+                        <input type="button" class="microphone-button"/>
+                    </div>
+                    
+                    <button type="submit" class="btn">Google Search</button>
+                    <button type="submit" class="btn">I'm Feeling Lucky</button>
+
+                </form>
+            </div>
+        </div>
+    </body>
+    </html>

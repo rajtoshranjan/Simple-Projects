@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Google </title>
+
+        <link rel="icon" href="https://cdn1.iconfinder.com/data/icons/company-identity/100/new-google-favicon-512.png" type="image/x-icon"/>
+        <link rel="shortcut icon" href="https://cdn1.iconfinder.com/data/icons/company-identity/100/new-google-favicon-512.png" type="image/x-icon"/>
+
+        <link rel="stylesheet" href="{{url_for('static', filename='normalize.css')}}"/>
+        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}"/>
+    </head>
+    <body>
+        <header class="search-page-header-container">
+            <div>
+                <div class="google-home-nav">
+                    <a href="/" title="go to google home">
+                        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"/>
+                    </a>
+                </div>
+                <!-- form action, and method attributes need to be specified in order to create client server requests-->
+                <form class="google-search-form" action="/search" method="get">
+                    <div class="search-bar-container">
+                        <input type="text" class="search-input" placeholder="Search" name="q" id="search_box" />
+                        <input type="button" class="microphone-button"/>
+                        <input type="button" class="search-button"/>
+                    </div>
+                </form>
+                <div class="profile-nav">
+                    <input type="button" class="apps-menu"/>
+                    <input type="button" class="profile-icon"/>
+                </div>
+            </div>
+            <div class="utils-nav-outer-container">
+                <div class="utils-nav-container cf">
+                    <div class="primary-utils-nav">
+                        <div class="utils-nav-box" id="all-link"><a href="#All">All</a></div>
+                        <div class="utils-nav-box"><a href="#Images">Images</a></div>
+                        <div class="utils-nav-box"><a href="#News">News</a></div>
+                        <div class="utils-nav-box"><a href="#Maps">Maps</a></div>
+                        <div class="utils-nav-box"><a href="#Videos">Videos</a></div>
+                        <div class="utils-nav-box"><a href="#More">More</a></div>
+                    </div>
+                    <div class="secondary-utils-nav">
+                        <div class="utils-nav-box"><a href="#Settings">Settings</a></div>
+                        <div class="utils-nav-box"><a href="#Tools">Tools</a></div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section class="results-section">
+            <div class="results-section-left">
+                <div class="results-search-metric">About 64,400,000 results (0.53 seconds)</div>
+                <!-- <div class="result-entry-container" id="result-entry-container-one">
+                    <div>
+                        <a href="https://en.wikipedia.org/wiki/Amazon_rainforest"
+                           class="primary-link">
+                            <h3>Amazon rainforest - Wikipedia</h3>
+                        </a>
+                    </div>
+                    <div class="secondary-link-container">
+                        <a href="https://en.wikipedia.org/wiki/Amazon_rainforest"
+                           class="secondary-link">
+                        https://en.wikipedia.org/wiki/Amazon_rainforest
+                        </a>
+                    </div>
+                    <span class="result-text-snippet">The Amazon rainforest also known in English as Amazonia or the Amazon Jungle, is a moist broadleaf forest in the Amazon biome that covers most of the</span>
+                    <div class="related-key-words-nav">
+                        <a href="#AmazonBasin">Amazon basin</a>
+                        .&nbsp;
+                        <a href="#Deforestation">Deforestation of the Amazon</a>
+                        .&nbsp;                  
+                        <a href="SaveForest">Save the Amazon Rainforest</a>
+                    </div>
+                </div> -->
+                {% for item  in result: %}  
+                <div class="result-entry-container" id="result-entry-container-two">
+                    <div>
+                        <a href="{{item[1]}}"
+                            class="primary-link">
+                            <h3>{{item[0] | safe}}</h3>
+                        </a>
+                    </div>
+                    <div class="secondary-link-container">
+                        <a href="{{item.1}}"
+                           class="secondary-link">
+                            "{{item[1]}}"
+                        </a>
+                    </div>
+                    <span class="result-text-snippet">{{item[2] | safe}}</span>
+                </div>
+                {% endfor %}  
+                
+                <br>
+                <div style="text-align: center; font-family: arial,sans-serif;" class="result-entry-container">
+                    <td >
+                        <tr><a href="/search?q={{query}}&page=1">1&nbsp;</a></tr>
+                        <tr><a href="/search?q={{query}}&page=2">2&nbsp;</a></tr>
+                        <tr><a href="/search?q={{query}}&page=3">3&nbsp;</a></tr>
+                        <tr><a href="/search?q={{query}}&page=4">4&nbsp;</a></tr>
+                        <tr><a href="/search?q={{query}}&page=5">5&nbsp;</a></tr>
+                        <tr><a href="/search?q={{query}}&page=6">6&nbsp;</a></tr>
+                        <tr><a href="/search?q={{query}}&page=7">7&nbsp;</a></tr>
+                        <tr><a href="/search?q={{query}}&page=8">8&nbsp;</a></tr>
+                        <tr><a href="/search?q={{query}}&page=9">9&nbsp;</a></tr>
+                        <tr><a href="/search?q={{query}}&page=10">10</a></tr>
+                    </td>
+                </div>
+            </div>
+            <aside class="results-section-related-info">
+                <header class="results-header-section">
+                    <div class="header-image-container">
+                        <img src="https://scontent.fpat6-1.fna.fbcdn.net/v/t1.0-0/p370x247/129009752_929583730909241_7965782011683552198_n.png?_nc_cat=104&ccb=2&_nc_sid=85a577&_nc_ohc=I65Ur1KQ-i4AX_n2SPH&_nc_ht=scontent.fpat6-1.fna&_nc_tp=30&oh=e49ac7f857a524e35c5841181e1c4d08&oe=5FF29F75"
+                             class="header-image" style="width: 100%;" />
+                    </div>
+                    <div class="header-text-container">
+                        <h1 class="related-info-header-text">CodinGunda</h1>
+                        <span class="minor-description">Enemy of Error</span>
+                    </div>
+                </header>
+                <section class="result-description-container">
+                    <h3 class="related-info-header-text">Amazon rainforest</h3>
+                    <p class="description-text-sm text-row">The Amazon rainforest, covering much of northwestern Brazil and extending into Colombia, Peru and other South American countries, is the world’s largest tropical rainforest, famed for its biodiversity. It’s crisscrossed by thousands of rivers, including the powerful Amazon. River towns, with 19th-century architecture from rubber-boom days, include Brazil’s Manaus and Belém and Peru’s Iquitos and Puerto Maldonado.</p>
+                    <div class="text-row">
+                        <strong class="-sm">Area:</strong>
+                        <span class="description-text-sm">2.124 million mi<sup>2</sup></span>
+                    </div>
+                    <div class="description-text-sm text-row">
+                        <strong class="label-text-sm">Location:</strong>
+                        <a href="#">Brazil</a>,
+                        <a href="#">Peru</a>,
+                        <a href="#">Columbia</a>,
+                        <a href="#">Venezuela</a>,
+                        <a href="#">Ecuador</a>,
+                        <a href="#">Bolivia</a>,
+                        <a href="#">Guyana</a>,
+                        <a href="#">Suriname</a>,
+                        <a href="#">France (French Guiana)</a>
+                    </div>
+                    <div>
+                        <strong class="label-text-sm">Coordinates:</strong>
+                        <span class="description-text-sm">Coordinates: 3<sup>&deg;</sup>S 60<sup>&deg;</sup>W</span>
+                    </div>
+                </section>
+                <footer class="related-info-footer">
+                    <div class="flight-info-container text-row">
+                        <span class="airplane-icon"></span>
+                        <span class="flight-info-text">14 h flight</span>
+                    </div> 
+                    <div class="text-row">
+                        <strong class="label-text-sm">Did you know:</strong>
+                        <span class="description-text-sm">There are quote a few jungle lodges in the Tambopata Reserve area of the Amazon jungle.</span>
+                        <a href="https://www.tripadvisor.ca/ShowTopic-g294315-i5895-k2887605-What_is_the_best_Peruvian_Amazon_Area_to_visit-Iquitos_Loreto_Region.html"
+                           class="description-text-sm">
+                            tripadvisor.ca
+                        </a>
+                    </div>
+                    <div class="text-row review-section">
+                        <div class="review-col-left">
+                            <span class="label-text-md">Reviews</span>
+                            <a href="#"
+                               class="label-text-sm display-block">3,154 Google reviews</a>
+                        </div>
+                        <div class="review-section-btn-container">
+                            <input type="button" value="Write a review" class="review-section-btn btn-label-text-sm"/>
+                            <input type="button" value="Add a photo" class="review-section-btn btn-label-text-sm"/>
+                        </div>
+                    </div>
+                    <div class="also-search-for-section also-search-for-inline-block-fix">
+                        <h3 class="label-text-md">People also search for</h3>
+                        <a href="#" class="view-additional-nav label-text-sm">View 15+ more</a>
+                        <a class="img-link">
+                            <img src="data:image/jpeg;base64,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"/>
+                            <div class="label-text-sm img-link-description-text-container">Amazon River</div>
+                        </a>
+                        <a class="img-link">
+                            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAEgASAMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAAAQIDBQYEB//EADQQAAIBAgQEBAQDCQAAAAAAAAECAwARBBIhMQVBUWEGEyJxgZHR4RUyUhQjQlNiobHB8P/EABgBAAMBAQAAAAAAAAAAAAAAAAABAgME/8QAIBEAAgICAgIDAAAAAAAAAAAAAAEREgIDIUETMRQjUf/aAAwDAQACEQMRAD8A9m89QdUA+FNM4OwAqQW57UFBa4GlPgASUcl/tSkgnakC6bU5e4oARsxWy6Vzukx3BNdWlMNr337USBnpvDGDeMrh8KuHZS0kXliyxylcvmZdiQLWv00tXl3jDARcN4t+DcKilXMRmUMGEl1AygDkCGOuxY9re5X55LCs3w3gc2GxuGxGKWCWZRiJZMRk1EkkgYZb66C4qNmNlCEP8OcHg4HwiPCx4FY55Y1M8YbMGfKASSb6UlXRDfzCfhRVpJKBkoJ604n3qt/El5RtSjiAOya92q/Hl+EWRZAnrS3vVf8At5GpQfOo24vEhs+Ue7ijx5DsizNNtVY3HcEoN5lFv6h9a5j4nwF9Gci+4U0qwEyXR9zSE96pJPE+BGxdvZD9KYfEmFKltgP1Aj/VEDkumoqgPifB6+tdOhP0opwKTInimJO8xUdFNqY/EZ2BJxEgHP1mshLxLGrzVNPVYDQUz8SxTM15z6hqBtb2rOzGaQ8cci585l5Xc0h4yQQVhQAfrN71m1xkwAVnuBUq4sG/mKSQORq5w7RPJdNxiS5/dx37cqmh4pnsJ0AJ2baqQPnN4wu9wt9qazyEmw7Gn9bFORpVxaMdGLfHamHFLEPSCBfS1ZzzZBYDS2osKlix+KUgEhh3GtQ8F0VZmgGLytm1N+hNLVbFjPORSYmRze7ch0AHy3pK5nsScQaKStjRJAVgcs675tielPOEZxYQh78o/tXcmGw7B/SUW9lLDQ1NDgGhhPkWzk3zE/m7b6fasXtr6Y6spEwsasTI7Bx/CU1+tLFhyd/VmNhYG5+FaHysxAxGYudDpm7VEYCJAXRVXkbC5+e1HykFCqhwbKLsyk2sRsQaeMNNEciyC7nQBiQatZI7FvIiS43BHy1ou5Vc8ZVtdB9qa3yOqK4STxm0sWdbaBdb9aDiLNcwrcb2AvXZicMgjZ4QEnv+ZtiOlc74ZlaIykhbm9tl0PKh7VAqhJiRNGqQxnMVOoUafX3orlxBdCVQqyMCQU1KEEjXY2+1FZqBlyLs11BjbmMuYd/ahiY3s8hyg6Ciisl7qaMnikEDNJLGzAgAXPalxmJXFYWRYsuYjMuWw170tFZ0UyQ+CuUYhYVBDl9Lkc66sMnkqGkmUXXYm9FFW+VACT4eYysYwoQkgXbTQ6GoJQ6KySMep11t/wB/miijF9DOAM8RGQFAR6QB+UUUUVbYSf/Z"/>
+                            <div class="label-text-sm img-link-description-text-container">Cerrado</div>
+                        </a>
+                        <a class="img-link">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEcAAAAyCAMAAAA5gTZfAAAA9lBMVEUAmzr+3wAAJ3b/4wAAljwAmTsAlT0ADnoAmDwAAHv/6AAAJXX/5QAAH3MAInQAInft2g2QuSkAHHKkwCVmrTC1xSB9sy3j1hE6ojYnnzh3sS733QbT0Be2pUNAR2zDyh05Q25VqDOMg1VVYZSYjFDy2BLMtjYwQoMAFXAAAG7///8VLnkADW8AFHmtoEaonEn49cfA38+WsrEAHX1EU4xXXZXA1c7L68+23MFpb59ueKKVnragqaZ4cl0jOH0dLnGkl04hNIjo1347S5J9haqNk7Xc2uii2qy85MCKnayrwMmeq7qFkqt0ip7b6uFZZ5PDydXq++pbRpn9AAACdUlEQVRIie2Wa3OaQBiFl10QYWFJ0MQkhtyIAgFNrUS8VJOmpFrtJf3/f6YsqIhDU1A+9EPOOIPOLMezu8/77gLwrv9EHMsVYcNWa1V2b5cyuEQMugyee6l0zEQ6Lu0T5vQcLX3Q+emukTj2kNnU4W7rXT6phWEQklD0pXaSPxLHVujLSGw075/umw0x/FXJG4m9PkA0SvtK4FutFi9ctWkodHCdBwGufET/Xmw+8gqMpPCPTZFGOipnjsRW66HNrUBgLCLchkb1jFQG5El0WcUbASYl3FAjRspE5Yo8Sdu2CYw0KSOVMXkNQaWSMY59MN/IRCVXWpMnjd2h7/vDB+xYphxYhEbdsbimsvTX9V6RF8bpeNMZ/dz1v34bWI6BE4HeoJIrV9YuDPM8X4y+v/xYzF87dzOvvxhZKnXitXgMqqQhEJEXT8saWmYgx3Im/uLnzOv5lkonJsWDUqhckreWeKFMVotLVMcZzL1p75eFlQtxc9g2ldxZPWHDiHa0sPKSQdd0X6e/PyqmnfAJqDzjMvjIQ/oIqCaYWA89rz9w3vRJmxd9PcxDXBKZWiPP+5QYllJt2+vcJXq019B27SgdtvTOh02X1OpP7DvSulBfsqyr7pIe2fz8vGGTuu/bHH4xZGzodG62Gs0LTnxD+TeHIFEX4rgLiS4HyED1RaVlQbA5aGWqC5CoUx5DQi2C+WBoYOJC3chYp1TJvrGqdsPUDWOSvW+AtD6GIbaHpp6vj4HNvhp2ZzwJjGSi5+yroLA+D+JzR1ufO9oO5w5InIPtp/bO5yAo6lwGhd0TQFH3Fqpi7lGgsHsdKOqeCQq7976rCP0BxsJCLmgnniAAAAAASUVORK5CYII="/>
+                            <div class="label-text-sm img-link-description-text-container">Brazil</div>
+                        </a>
+                        <a class="img-link">
+                            <img src="data:image/jpeg;base64,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"/>
+                            <div class="label-text-sm img-link-description-text-container">Atlantic Forest</div>
+                        </a>
+                        <a class="img-link">
+                            <img src="data:image/jpeg;base64,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"/>
+                            <div class="label-text-sm img-link-description-text-container">Caatinga</div>
+                        </a>
+                    </div>
+
+                </footer>
+            </aside>
+        </section>
+
+        <script type="text/javascript">
+            var query = window.location.search.substring(1); 
+            var vars = query.split("&");
+            var spl_vars = vars[0].split('=');
+            if(spl_vars[0] == "q")
+                document.getElementById('search_box').value = spl_vars[1].replace(/\+/g, ' ').replace(/%20/g, ' ');
+        </script>
+    </body>
+</html>
